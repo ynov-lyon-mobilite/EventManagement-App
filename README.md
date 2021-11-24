@@ -1,67 +1,36 @@
-**# YVENT MOBILE APPLICATION**
+# YVENT MOBILE APPLICATION
 
 
 
 
-
-**## Launch**
-
-
-
-
+## Launch
 
 From the right folder
 
+```ionic serve``` with CMD
 
-
-\```ionic serve``` with CMD
-
-
-
-\```npm start``` with VS Code terminal
+```npm start``` with VS Code terminal
 
 
 
 
-
-**## Deploying to iOS and Android**
-
+## Deploying to iOS and Android**
 
 
-**##### Capacitor Setup**
+##### Deployment
 
+```ionic build```
 
+```ionic cap add android``` or ```ionic cap add ios``` 
 
-\```ionic build```
+```ionic cap copy```
 
+```ionic cap sync```
 
+##### Android Deployment
 
-\```ionic cap add android``` or ```ionic cap add ios``` 
+```ionic cap open android```
 
+##### iOS Deployment**
 
-
-\```ionic cap copy```
-
-
-
-\```ionic cap sync```
-
-
-
-
-
-**##### Android Deployment**
-
-
-
-\```ionic cap open android```
-
-
-
-
-
-**##### iOS Deployment**
-
-
-
-\```ionic cap open ios```
+```ionic cap open ios```
