@@ -1,0 +1,7 @@
+{
+  "name": "YventIonicReact",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
