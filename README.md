@@ -1,36 +1,15 @@
-# YVENT MOBILE APPLICATION
+# Yvent
 
 
+### Start project
+
+From CMD : 
+```ionic serve```
+
+From VS Code terminal : 
+```npm start```  (run ```npm install``` before the first time you launch the app)
 
 
-## Launch
+### Ionic documentation
 
-From the right folder
-
-```ionic serve``` with CMD
-
-```npm start``` with VS Code terminal
-
-
-
-
-## Deploying to iOS and Android**
-
-
-##### Deployment
-
-```ionic build```
-
-```ionic cap add android``` or ```ionic cap add ios``` 
-
-```ionic cap copy```
-
-```ionic cap sync```
-
-##### Android Deployment
-
-```ionic cap open android```
-
-##### iOS Deployment**
-
-```ionic cap open ios```
+https://ionicframework.com/docs

@@ -1,0 +1,132 @@
+.MainImage {
+    position: absolute;
+    width: 100%;
+    height: 35%; 
+    background-color: grey;
+    background-image: url("../../assets/images/glasses-alcool.jpg") ;
+    background-size: cover;
+    color:white;
+    
+}
+
+.calcInMainImage {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, .2);
+}
+
+.TitleInMainImage {
+    position:absolute ; 
+    left: 5.8%;
+    bottom: 15.3%;
+    font-weight: 500;
+    font-size: 30px;
+    font-weight: bold,
+    // line-height: 41px;
+}
+
+.DateInMainImage {
+
+    position:absolute;
+    font-weight: normal;
+    font-size: 15px;
+    // line-height: 24px;
+    top: 85%;
+    left: 6.77%;
+}
+
+.HoureInMainImage {
+
+    position: absolute;
+    font-size: 15px;
+    // line-height: 24px;   
+    top: 85%;
+    right: 6.77%;
+}
+
+.ReturnIconBlock {
+    color: black;
+    width: 65px;
+    height: 60px;
+}
+
+.ReturnIcon {
+    width: 60%;
+    height: 90%;
+}
+
+.Overview {
+    position: absolute;
+    font-size: 13px;
+    font-weight: lighter;
+    top: 41%;
+    margin-left: 7%;
+    margin-right: 4%;
+}
+
+.OverviewTitle {
+    position: absolute;
+    font-size: 18px;
+    // line-height: 24px;
+    top: 36.5%;
+    left: 7%;
+}
+
+.MapPhoto {
+    position: absolute;
+    width: 86%;
+    height: 30%;
+    margin-left: 7%;
+    margin-right: 7%;
+    top: 50%;
+    background-size: cover;
+    background-image: url("../../assets/images/kolokMap.png");
+}
+
+.ParticipantTitle {
+    position: absolute;
+    left: 7%;
+    top: 83%;
+}
+
+.TextInParticipantTotal {
+    position: absolute;
+    padding-top: 20%;
+    padding-left: 5%;
+    font-size: 13px;
+}
+
+.ButtonBuy {
+    border: unset;
+    box-shadow: unset;
+    position: absolute;
+    width: 86%;
+    height: 6.4%;
+    margin-left: 7%;
+    margin-right: 7%;
+    border-radius: 16px;
+    top: 90%;
+    background-color: #F39200;
+}
+
+.TextButtonBuy {
+    text-decoration: none;
+    padding-top: 2%;
+    display: flex;
+    justify-content: center;
+    font-size: 130%;
+    font-weight: 100px;
+    color: white;
+}
+
+p.Bold {
+    display:contents;
+    font-weight: bold;
+}
+
+p.LightItalic {
+    display:contents;
+    font-weight:italic;
+}

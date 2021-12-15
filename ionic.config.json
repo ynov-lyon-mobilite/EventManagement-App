@@ -1,7 +1,7 @@
 {
-  "name": "YventIonicReact",
+  "name": "event-app",
   "integrations": {
-    "capacitor": {}
+    "cordova": {}
   },
-  "type": "react"
+  "type": "angular"
 }
