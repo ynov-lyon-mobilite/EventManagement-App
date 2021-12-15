@@ -6,3 +6,26 @@
     background-size: #EFEFEF;
     color:white;
 }
+
+.ProfilPhoto {
+
+    position: absolute;
+    width: 0%;
+    height: 50%;
+    // padding-bottom: 33%;
+    top : 23%;
+    left: 33%;
+    background-color: #bbb;
+    border-radius: 50%;
+    background-image: url("../../assets/images/profile-photo.png");
+    background-size: cover;
+    border: solid black 1px;
+}
+
+p.Name {
+    // position:relative;
+    text-align: center;
+    top: 90%;
+    color: black;
+    font-weight:bolder;
+}
