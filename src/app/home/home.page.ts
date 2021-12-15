@@ -7,6 +7,19 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  Events = [];
+
+  constructor() {
+    this.Events = [
+      {
+        name: 'Gratuit',
+        source: "../../assets/images/glasses-alcool.jpg",
+      },
+      {
+        name: 'Kolok',
+        source: "../../assets/images/la-kolok-lyon.png",
+      },
+    ];
+  }
 
 }
