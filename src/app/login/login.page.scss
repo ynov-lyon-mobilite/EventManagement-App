@@ -10,6 +10,15 @@ a {
   margin-left: 5px;
 }
 
-text{
-  margin-left: 5px;
+ion-header{
+  div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ion-img{
+        max-width: 50%;
+        max-height: 50%;
+      }
+  }
 }
+
