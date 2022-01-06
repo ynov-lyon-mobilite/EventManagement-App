@@ -7,7 +7,7 @@
     </ion-buttons>
 
     <ion-title>
-      Event
+      Événements
     </ion-title>
 
     <ion-buttons slot="end">
@@ -20,11 +20,11 @@
 
 <ion-content [fullscreen]="true">
   <div class="banner">
-    <img src="../../assets/banner.svg" />
+    <img src="../../assets/party_mod.png" />
 
     <div class="caption ion-padding">
-      Join with <br>
-      upcoming events
+      Événements <br>
+      à venir
     </div>
 
     <div class="search">
@@ -39,82 +39,84 @@
   </div>
 
   <div class="title">
-    <h2>Popular Events</h2>
+    <h2>Pour vous</h2>
 
     <p>See all</p>
   </div>
 
   <div class="event-slider">
     <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }" class="default-left-padding">
-      <ion-slide>
-        <ion-col class="ion-text-left">
-          <ion-card>
-            <ion-card-header class="ion-no-padding">
-              <img src="../../assets/events/event1.svg" />
-            </ion-card-header>
+      <!-- <ion-item>  -->
+        <ion-slide *ngFor="let event of Events">
+          <ion-col class="ion-text-left">
+            <ion-card>
+              <ion-card-header class="ion-no-padding">
+                <img src={{event.source}} />
+              </ion-card-header>
 
-            <ion-card-content>
-              <p class="date">17th July, 2021</p>
-              <h2 class="eventname">International Jazz Festival</h2>
-              <p class="location"><ion-icon name="location"></ion-icon>Caracas, Venezuela</p>
+              <ion-card-content>
+                <p class="date">{{event.date}}</p>
+                <h2 class="eventname">{{event.name}}</h2>
+                <p class="location"><ion-icon name="location"></ion-icon>{{event.location}}</p>
+                <ion-button [routerLink]="['/free-event']">Voir les détails</ion-button>
+                <div class="additional-info">
+                  <div class="attendees">
+                    <img src="../../assets/persons/person1.svg" />
+                    <img src="../../assets/persons/person2.svg" />
+                    <img src="../../assets/persons/person3.svg" />
+                    <img src="../../assets/persons/person4.svg" />
+                    <div class="count">
+                      <img src="../../assets/persons/person-placeholder.svg" />
 
-              <div class="additional-info">
-                <div class="attendees">
-                  <img src="../../assets/persons/person1.svg" />
-                  <img src="../../assets/persons/person2.svg" />
-                  <img src="../../assets/persons/person3.svg" />
-                  <img src="../../assets/persons/person4.svg" />
-                  <div class="count">
-                    <img src="../../assets/persons/person-placeholder.svg" />
-
-                    <p>+7</p>
+                      <p>+7</p>
+                    </div>
                   </div>
+
+                  <p class="time">{{event.time}}</p>
                 </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-slide>
+        <!-- <ion-slide>
+          <ion-col class="ion-text-left">
+            <ion-card>
+              <ion-card-header class="ion-no-padding">
+                <img src="../../assets/images/la-kolok-lyon.png" />
+              </ion-card-header>
 
-                <p class="time">10:00pm</p>
-              </div>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-slide>
-      <ion-slide>
-        <ion-col class="ion-text-left">
-          <ion-card>
-            <ion-card-header class="ion-no-padding">
-              <img src="../../assets/events/event2.svg" />
-            </ion-card-header>
+              <ion-card-content>
+                <p class="date">23th July, 2021</p>
+                <h2 class="eventname">{{Events[1].name}}</h2>
+                <p class="location"><ion-icon name="location"></ion-icon>Caracas, Venezuela</p>
 
-            <ion-card-content>
-              <p class="date">23th July, 2021</p>
-              <h2 class="eventname">Contemporary Dance</h2>
-              <p class="location"><ion-icon name="location"></ion-icon>Caracas, Venezuela</p>
+                <div class="additional-info">
+                  <div class="attendees">
+                    <img src="../../assets/persons/person1.svg" />
+                    <img src="../../assets/persons/person2.svg" />
+                    <img src="../../assets/persons/person3.svg" />
+                    <img src="../../assets/persons/person4.svg" />
+                    <div class="count">
+                      <img src="../../assets/persons/person-placeholder.svg" />
 
-              <div class="additional-info">
-                <div class="attendees">
-                  <img src="../../assets/persons/person1.svg" />
-                  <img src="../../assets/persons/person2.svg" />
-                  <img src="../../assets/persons/person3.svg" />
-                  <img src="../../assets/persons/person4.svg" />
-                  <div class="count">
-                    <img src="../../assets/persons/person-placeholder.svg" />
-
-                    <p>+3</p>
+                      <p>+3</p>
+                    </div>
                   </div>
-                </div>
 
-                <p class="time">10:00pm</p>
-              </div>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-slide>
+                  <p class="time">10:00pm</p>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-slide> -->
+      <!-- </ion-item> -->
     </ion-slides>
   </div>
 
-  <div class="default-top-padding title">
-    <h2>Live right now</h2>
+  <!-- <div class="default-top-padding title">
+    <h2>Événements en cours</h2>
 
-    <p>See all</p>
+    <p>Voir tous</p>
   </div>
 
   <div class="live-event">
@@ -150,4 +152,4 @@
       </div>
     </div>
   </div>
-</ion-content>
+</ion-content> -->
