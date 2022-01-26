@@ -12,4 +12,5 @@ export class PayEventPage implements OnInit {
   ngOnInit() {
   }
 
+  price = "10";
 }

@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FreeEventPageRoutingModule } from './free-event-routing.module';
+import { EditProfilPageRoutingModule } from './edit-profil-routing.module';
 
-import { FreeEventPage } from './free-event.page';
+import { EditProfilPage } from './edit-profil.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FreeEventPageRoutingModule
+    EditProfilPageRoutingModule
   ],
-  declarations: [FreeEventPage]
+  declarations: [EditProfilPage]
 })
-export class FreeEventPageModule {
-}
+export class EditProfilPageModule {}
