@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {Apollo, gql} from 'apollo-angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+   constructor(private apollo: Apollo) {}
 
-  ngOnInit() {
-  }
+   ngOnInit(){
+    console.log(this.apollo);
+   }
 
 }
