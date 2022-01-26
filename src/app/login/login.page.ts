@@ -44,7 +44,7 @@ export class LoginPage implements OnInit{
           password: formLogin.value.password
         }
       }).subscribe(({ data }) => {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/tablinks/home']);
         console.log('got data', data);
       },(error) => {
         try {
