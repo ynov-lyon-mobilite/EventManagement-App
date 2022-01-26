@@ -17,4 +17,5 @@ import { FreeEventPage } from './free-event.page';
   ],
   declarations: [FreeEventPage]
 })
-export class FreeEventPageModule {}
+export class FreeEventPageModule {
+}

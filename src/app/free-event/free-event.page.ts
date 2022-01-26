@@ -12,4 +12,5 @@ export class FreeEventPage implements OnInit {
   ngOnInit() {
   }
 
+  nbPlaces = 32;
 }
