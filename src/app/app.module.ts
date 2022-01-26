@@ -35,4 +35,11 @@ import {InMemoryCache} from '@apollo/client/core';
       }],
   bootstrap: [AppComponent],
 })
-export class AppModule {} 
+
+@NgModule({
+  imports: [BrowserModule, ],
+  providers: [
+
+  ],
+})
+export class AppModule {}
