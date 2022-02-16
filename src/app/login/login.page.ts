@@ -4,6 +4,7 @@ import {Apollo, gql} from 'apollo-angular';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { Token } from 'graphql';
 
 const LOGIN = gql`
   mutation Login ($email: String!, $password: String!){
@@ -44,6 +45,8 @@ export class LoginPage implements OnInit{
           password: formLogin.value.password
         }
       }).subscribe(({ data }) => {
+        const res: any = data;
+        localStorage.setItem("token", res.login.jwt);
         this.router.navigate(['/tablinks/home']);
       },(error) => {
         try {
