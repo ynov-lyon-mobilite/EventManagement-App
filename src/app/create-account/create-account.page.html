@@ -8,12 +8,12 @@
     <div class="input-group">
       <ion-item lines="full">
         <ion-label position="floating">Prenom</ion-label>
-        <ion-input name="displayName" type="text" required ngModel></ion-input>
+        <ion-input name="displayName" type="text" minlength="4" required ngModel></ion-input>
       </ion-item>
       
       <ion-item lines="full">
         <ion-label position="floating">Nom</ion-label>
-        <ion-input type="text" required></ion-input>
+        <ion-input name="name" type="text" minlength="4" required ngModel></ion-input>
       </ion-item>
 
       <ion-item lines="full">
