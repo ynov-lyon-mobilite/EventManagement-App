@@ -8,7 +8,7 @@ const routes: Routes = [
     pathMatch: 'full'
   }, 
   {
-    path: 'event/:uuid',
+    path: 'free-event',
     loadChildren: () => import('./free-event/free-event.module').then( m => m.FreeEventPageModule)
   },
   {
@@ -26,10 +26,11 @@ const routes: Routes = [
   {
     path: 'tablinks',
     loadChildren: () => import('./tablinks/tablinks.module').then( m => m.TablinksPageModule)
+  },
+  {
+    path: 'create-account',
+    loadChildren: () => import('./create-account/create-account.module').then( m => m.CreateAccountPageModule)
   }
-
-
-
 ];
 
 @NgModule({

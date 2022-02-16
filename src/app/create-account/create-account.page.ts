@@ -5,9 +5,9 @@ import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
-const LOGIN = gql`
-  mutation Login ($email: String!, $password: String!){
-    login(email: $email password: $password){
+const createAccount = gql`
+  mutation Login ($email: String!, $password: String!, $displayName: String!){
+    register(email: $email password: $password displayName: $displayName){
       jwt
       user{
         displayName
@@ -17,13 +17,12 @@ const LOGIN = gql`
 `;
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-create-account',
+  templateUrl: './create-account.page.html',
+  styleUrls: ['./create-account.page.scss'],
 })
 
-export class LoginPage implements OnInit{
-
+export class CreateAccountPage implements OnInit {
   constructor(private apollo: Apollo, private router: Router, public toastCtrl: ToastController) {}
   ngOnInit(){}
 
@@ -36,15 +35,16 @@ export class LoginPage implements OnInit{
     });
     toast.present();
   }
-  onSubmit(formLogin: NgForm){
+  onSubmit(formCreateAccount: NgForm){
       this.apollo.mutate({
-        mutation: LOGIN,
+        mutation: createAccount,
         variables: {
-          email: formLogin.value.email,
-          password: formLogin.value.password
+          email: formCreateAccount.value.email,
+          password: formCreateAccount.value.password,
+          displayName: formCreateAccount.value.displayName
         }
       }).subscribe(({ data }) => {
-        this.router.navigate(['/tablinks/home']);
+        this.router.navigate(['/tablinks/login']);
       },(error) => {
         try {
           let jsonMsg = JSON.parse(error.message);
@@ -55,4 +55,5 @@ export class LoginPage implements OnInit{
         }
       });
   }
+
 }
