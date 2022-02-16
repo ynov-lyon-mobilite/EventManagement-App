@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
 const createAccount = gql`
-  mutation Login ($email: String!, $password: String!, $displayName: String!){
+  mutation createAccount ($email: String!, $password: String!, $displayName: String!){
     register(email: $email password: $password displayName: $displayName){
       jwt
       user{
