@@ -1,0 +1,37 @@
+<div class="page">
+<ion-header class="ion-no-border">
+  <div>
+    <ion-img src="../../assets/logo.png"></ion-img>
+  </div>
+</ion-header>
+  <form #formCreateAccount="ngForm" (ngSubmit)="onSubmit(formCreateAccount)">
+    <div class="input-group">
+      <ion-item lines="full">
+        <ion-label position="floating">Prenom</ion-label>
+        <ion-input name="displayName" type="text" required ngModel></ion-input>
+      </ion-item>
+      
+      <ion-item lines="full">
+        <ion-label position="floating">Nom</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input name="email" type="email" required ngModel email="true"></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input name="password" type="password" minlength="4" required ngModel password="true"></ion-input>
+      </ion-item>
+    </div>
+    <div class="input-inscription">
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" [disabled]="formCreateAccount.form.invalid" color="primary" expand="block">S'inscrire</ion-button>
+      </ion-col>
+    </ion-row>
+    </div>
+  </form>
+</div>
