@@ -45,4 +45,11 @@ import { GoogleMapsModule } from '@angular/google-maps';
       }],
   bootstrap: [AppComponent],
 })
-export class AppModule {} 
+
+@NgModule({
+  imports: [BrowserModule, ],
+  providers: [
+
+  ],
+})
+export class AppModule {}
