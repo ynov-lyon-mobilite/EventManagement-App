@@ -8,7 +8,7 @@ const routes: Routes = [
     pathMatch: 'full'
   }, 
   {
-    path: 'free-event',
+    path: 'event/:uuid',
     loadChildren: () => import('./free-event/free-event.module').then( m => m.FreeEventPageModule)
   },
   {
