@@ -26,6 +26,10 @@ const routes: Routes = [
         loadChildren: () => import('../free-event/free-event.module').then( m => m.FreeEventPageModule)
       },
       {
+        path: 'edit-profil',
+        loadChildren: () => import('../edit-profil/edit-profil.module').then( m => m.EditProfilPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tablinks/home',
         pathMatch: 'full'
