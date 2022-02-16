@@ -11,6 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {APOLLO_OPTIONS} from 'apollo-angular';
 import {HttpLink} from 'apollo-angular/http';
 import {InMemoryCache} from '@apollo/client/core';
+import { createApollo, GraphQLModule } from './graphql.module';
 // import { GoogleMapsModule } from '@angular/google-maps';
 
 // import { GoogleMapsModule } from '@angular/google-maps'
@@ -33,21 +34,14 @@ import {InMemoryCache} from '@apollo/client/core';
         },
         {
           provide: APOLLO_OPTIONS,
-          useFactory: (httpLink: HttpLink) => {
-            return {
-              cache: new InMemoryCache(),
-              link: httpLink.create({
-                uri: 'https://yvent-api.herokuapp.com/api/graphql',
-              }),
-            };
-          },
-          deps: [HttpLink],
+          useFactory: createApollo,
+          deps: [HttpLink]
       }],
   bootstrap: [AppComponent],
 })
 
 @NgModule({
-  imports: [BrowserModule, ],
+  imports: [BrowserModule],
   providers: [
 
   ],

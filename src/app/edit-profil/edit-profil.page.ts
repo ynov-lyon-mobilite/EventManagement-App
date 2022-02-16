@@ -2,12 +2,12 @@ import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {Apollo, gql} from 'apollo-angular';
-import { Token } from 'graphql';
 
-const editProfil = gql`
-query user () {
-  editProfil (email: $email) {
-    email
+const EDITPROFIL = gql`
+query user_infos {
+  user_infos {
+    uuid,
+    displayName
   }
 }
 `;
@@ -19,8 +19,7 @@ query user () {
 })
 export class EditProfilPage implements OnInit {
 
-  loading: boolean;
-  editProfil: any;
+  displayName: any;
  
   paramSubscription:Subscription 
   querySubscription:Subscription 
@@ -30,18 +29,16 @@ export class EditProfilPage implements OnInit {
   ngOnInit() {
     this.paramSubscription = this.route.params.subscribe(params => {
       this.querySubscription = this.apollo.watchQuery<any>({
-        query: editProfil,
-        variables:{event:params.uuid}
+        query: EDITPROFIL,
       })
         .valueChanges
-        .subscribe(({ data, loading }) => {
-          this.loading = loading;
-
-          if (editProfil) {
+        .subscribe(({ data }) => {
+          if (data){
+            this.displayName = data.user_infos.displayName;
+          } else {
+            this.displayName = "Pas de profil"
           }
-
         });
       })
-
     }
   }
