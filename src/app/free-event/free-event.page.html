@@ -1,4 +1,11 @@
+<header>
+  <script src="../../app/free-event/free-event-page.js"></script>
+
+</header>
+
+
 <ion-content>
+
     <div class="MainImage">
 
         <ion-buttons slot="start">
@@ -7,15 +14,18 @@
           </ion-back-button>
         </ion-buttons>
         <div class="calcInMainImage"></div>
-        <div class="TitleInMainImage">Fin des ydays</div>
-        <div class="DateInMainImage">30 Fevrier, 2022</div>
-        <div class="HoureInMainImage">18h30 - 00h30</div>
+        <div class="TitleInMainImage">{{event?.title}}</div>
+        <div class="DateInMainImage" id="startDate">{{event?.date}}</div>
+        <div class="HoureInMainImage">{{event?.time}}</div>
 
     </div>
     <div class="OverviewTitle"><p class="Bold">Description</p></div>
-    <div class="Overview"><p class="LightItalic">Viens fêter la fin des Y-Days !</p></div>
-    <div class="MapPhoto"></div>
-    <div class="ParticipantTitle">Places restantes<p class="Bold">32</p></div>
+    <div class="Overview"><p class="LightItalic">{{event?.description}}</p></div>
+    <google-map></google-map>
+    <div #map style="width:100%;height:400px"></div>
+    <!-- <div class="MapPhoto"></div>  --> 
+    <!-- <div #mapWrapper id="map"></div> -->
+    <div class="ParticipantTitle">Places restantes : <p class="Bold">{{event?.restPlaces}}</p></div>
     <ion-back-button defaultHref="home" color="unset" fill="clear" icon="none" text="Je participe" style="padding-right: 7%;" class="ButtonBuy">
       <!-- <div class="TextButtonBuy">Je participe</div> -->
     </ion-back-button>

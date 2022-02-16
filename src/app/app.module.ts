@@ -11,11 +11,21 @@ import {HttpClientModule} from '@angular/common/http';
 import {APOLLO_OPTIONS} from 'apollo-angular';
 import {HttpLink} from 'apollo-angular/http';
 import {InMemoryCache} from '@apollo/client/core';
+import { GoogleMapsModule } from '@angular/google-maps';
+
+// import { GoogleMapsModule } from '@angular/google-maps'
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserModule, 
+    GoogleMapsModule
+],
   providers: [
         {
           provide: RouteReuseStrategy,
