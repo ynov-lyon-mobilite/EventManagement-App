@@ -24,7 +24,6 @@
     font-weight: 500;
     font-size: 30px;
     font-weight: bold,
-    // line-height: 41px;
 }
 
 .DateInMainImage {
@@ -32,7 +31,6 @@
     position:absolute;
     font-weight: normal;
     font-size: 15px;
-    // line-height: 24px;
     top: 85%;
     left: 6.77%;
 }
@@ -40,8 +38,7 @@
 .HoureInMainImage {
 
     position: absolute;
-    font-size: 15px;
-    // line-height: 24px;   
+    font-size: 15px;  
     top: 85%;
     right: 6.77%;
 }
@@ -69,7 +66,6 @@
 .OverviewTitle {
     position: absolute;
     font-size: 18px;
-    // line-height: 24px;
     top: 36.5%;
     left: 7%;
 }
@@ -130,3 +126,8 @@ p.LightItalic {
     display:contents;
     font-weight:italic;
 }
+
+//   #map {
+//     height: 300px; /* like this */
+//     width: 500px;
+// }
