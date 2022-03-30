@@ -1,12 +1,17 @@
-.MainImage {
-    position: absolute;
+.Header {
     width: 100%;
     height: 35%; 
     background-color: grey;
-    background-image: url("../../assets/images/glasses-alcool.jpg") ;
     background-size: cover;
     color:white;
     
+}
+
+.mainImage {
+    display: block;
+    position: relative;
+    align-self: center;
+    margin-bottom: 1px;
 }
 
 .calcInMainImage {
@@ -103,8 +108,11 @@
     margin-left: 7%;
     margin-right: 7%;
     border-radius: 16px;
+    padding-left: 10%;
     top: 90%;
     background-color: #F39200;
+    padding-right: 7%;
+    color: white;
 }
 
 .TextButtonBuy {
@@ -125,6 +133,11 @@ p.Bold {
 p.LightItalic {
     display:contents;
     font-weight:italic;
+}
+
+.back-button {
+    position: absolute;
+    width: 10%;
 }
 
 //   #map {

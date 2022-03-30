@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { PayEventPage } from './pay-event.page';
+import { FreeEventPage } from './event.page';
 
-describe('PayEventPage', () => {
-  let component: PayEventPage;
-  let fixture: ComponentFixture<PayEventPage>;
+describe('FreeEventPage', () => {
+  let component: FreeEventPage;
+  let fixture: ComponentFixture<FreeEventPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PayEventPage ],
+      declarations: [ FreeEventPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PayEventPage);
+    fixture = TestBed.createComponent(FreeEventPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

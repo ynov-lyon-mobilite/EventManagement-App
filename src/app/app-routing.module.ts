@@ -8,12 +8,8 @@ const routes: Routes = [
     pathMatch: 'full'
   }, 
   {
-    path: 'free-event',
-    loadChildren: () => import('./free-event/free-event.module').then( m => m.FreeEventPageModule)
-  },
-  {
-    path: 'pay-event',
-    loadChildren: () => import('./pay-event/pay-event.module').then( m => m.PayEventPageModule)
+    path: 'event/:uuid',
+    loadChildren: () => import('./event/event.module').then( m => m.FreeEventPageModule)
   },
   {
     path: 'single-ticket',
@@ -30,11 +26,11 @@ const routes: Routes = [
   {
     path: 'create-account',
     loadChildren: () => import('./create-account/create-account.module').then( m => m.CreateAccountPageModule)
-  },  {
+  },
+  {
     path: 'edit-pass',
     loadChildren: () => import('./edit-pass/edit-pass.module').then( m => m.EditPassPageModule)
   }
-
 ];
 
 @NgModule({

@@ -22,8 +22,8 @@ const routes: Routes = [
         loadChildren: () => import('../profil/profil.module').then(m => m.ProfilPageModule)
       },
       {
-        path: 'home/free-event',
-        loadChildren: () => import('../free-event/free-event.module').then( m => m.FreeEventPageModule)
+        path: 'home/event',
+        loadChildren: () => import('../event/event.module').then( m => m.FreeEventPageModule)
       },
       {
         path: 'edit-profil',
