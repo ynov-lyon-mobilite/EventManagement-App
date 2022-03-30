@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FreeEventPage } from './free-event.page';
+import { FreeEventPage } from './event.page';
 
 
 const routes: Routes = [

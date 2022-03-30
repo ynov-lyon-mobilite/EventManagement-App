@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+// import {} from 'googlemaps';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PayEventPageRoutingModule } from './pay-event-routing.module';
+import { FreeEventPageRoutingModule } from './event-routing.module';
 
-import { PayEventPage } from './pay-event.page';
+import { FreeEventPage } from './event.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PayEventPageRoutingModule
+    FreeEventPageRoutingModule
   ],
-  declarations: [PayEventPage]
+  declarations: [FreeEventPage]
 })
-export class PayEventPageModule {}
+export class FreeEventPageModule {
+}

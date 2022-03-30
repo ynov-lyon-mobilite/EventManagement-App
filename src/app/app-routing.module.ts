@@ -9,11 +9,7 @@ const routes: Routes = [
   }, 
   {
     path: 'event/:uuid',
-    loadChildren: () => import('./free-event/free-event.module').then( m => m.FreeEventPageModule)
-  },
-  {
-    path: 'pay-event',
-    loadChildren: () => import('./pay-event/pay-event.module').then( m => m.PayEventPageModule)
+    loadChildren: () => import('./event/event.module').then( m => m.FreeEventPageModule)
   },
   {
     path: 'single-ticket',

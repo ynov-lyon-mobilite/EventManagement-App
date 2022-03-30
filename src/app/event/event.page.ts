@@ -57,9 +57,9 @@ query user_infos {
 
 
 @Component({
-  selector: 'app-free-event',
-  templateUrl: './free-event.page.html',
-  styleUrls: ['./free-event.page.scss'],
+  selector: 'app-event',
+  templateUrl: './event.page.html',
+  styleUrls: ['./event.page.scss'],
 })
 
 
