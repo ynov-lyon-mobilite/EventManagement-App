@@ -1,14 +1,8 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary" no-border>
-    <ion-buttons slot="start">
-      <ion-button>
-        <img src="../../assets/menu.svg" />
-      </ion-button>
-    </ion-buttons>
+    <ion-buttons slot="start"> </ion-buttons>
 
-    <ion-title>
-      Événements
-    </ion-title>
+    <ion-title> Événements Ynov </ion-title>
 
     <ion-buttons slot="end">
       <ion-button>
@@ -22,16 +16,13 @@
   <div class="banner">
     <img src="../../assets/party_mod.png" />
 
-    <div class="caption ion-padding">
-      Événements <br>
-      à venir
-    </div>
+    <div class="caption ion-padding">Événements à venir</div>
 
     <div class="search">
       <ion-item lines="none" class="ion-no-padding">
         <ion-icon slot="start" name="search-outline"></ion-icon>
-        <ion-input placeholder="Search events"></ion-input>
-        <ion-button slot='end'>
+        <ion-input placeholder="Chercher un événement"></ion-input>
+        <ion-button slot="end">
           <img src="../../assets/filter.svg" />
         </ion-button>
       </ion-item>
@@ -40,43 +31,37 @@
 
   <div class="title">
     <h2>Pour vous</h2>
-
-    <p>See all</p>
   </div>
 
-  <div class="event-slider">
-    <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }" class="default-left-padding">
-        <ion-slide *ngFor="let event of Events">
-          <ion-col class="ion-text-left">
-            <ion-card>
-              <ion-card-header class="ion-no-padding">
-                <img src={{event.source}} />
-              </ion-card-header>
+  <div class="events" *ngFor="let event of Events">
+    <ion-card>
+      <ion-card-header class="ion-no-padding">
+        <img src="{{event.image}}" />
+      </ion-card-header>
 
-              <ion-card-content>
-                <p class="date">{{event.date}}</p>
-                <h2 class="eventname">{{event.name}}</h2>
-                <p class="location"><ion-icon name="location"></ion-icon>{{event.location}}</p>
-                <ion-button [routerLink]="['./event']">Voir les détails</ion-button>
-                <div class="additional-info">
-                  <div class="attendees">
-                    <img src="../../assets/persons/person1.svg" />
-                    <img src="../../assets/persons/person2.svg" />
-                    <img src="../../assets/persons/person3.svg" />
-                    <img src="../../assets/persons/person4.svg" />
-                    <div class="count">
-                      <img src="../../assets/persons/person-placeholder.svg" />
+      <ion-card-content>
+        <p class="date">{{event.formattedDate}}</p>
+        <h2 class="eventname">{{event.description}}</h2>
+        <ion-button [routerLink]="['./free-event']" style="color: white"
+          >Voir les détails</ion-button
+        >
+        <div class="additional-info">
+          <div class="attendees">
+            <img src="../../assets/persons/person1.svg" />
+            <img src="../../assets/persons/person2.svg" />
+            <img src="../../assets/persons/person3.svg" />
+            <img src="../../assets/persons/person4.svg" />
+            <div class="count">
+              <img src="../../assets/persons/person-placeholder.svg" />
+              <p style="font-size: 10px; left: 1">
+                {{event.participantsCount}}
+              </p>
+            </div>
+          </div>
 
-                      <p>+7</p>
-                    </div>
-                  </div>
-
-                  <p class="time">{{event.time}}</p>
-                </div>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-slide>
-    </ion-slides>
+          <p class="time">{{event.formattedTime}}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

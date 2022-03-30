@@ -25,14 +25,27 @@ import { withModule } from '@angular/core/testing';
 //   }
 // `;
 const GET_EVENTS = gql`
-  query Event($event: String!) {
-    event(uuid: $event) {
-      title
-      description
-      startDate
-      endDate
-      participantsCount
-      restPlaces
+  query GetEvent {
+    events(page: 1, take: 20, includePastEvents: true) {
+      pageInfo {
+        totalPages
+      }
+      edges {
+        node {
+          title
+          startDate
+          endDate
+          description
+          participantsCount
+          nbPlaces
+          image
+          restPlaces
+          prices {
+            uuid
+          }
+          uuid
+        }
+      }
     }
   }
 `;
@@ -46,54 +59,38 @@ export class HomePage {
   Events = [];
 
   loading: boolean;
-  event: any;
+  // event: any;
   paramSubscription: Subscription;
   querySubscription: Subscription;
 
   constructor(private route: ActivatedRoute, private apollo: Apollo) {
-    this.Events = [
-      {
-        name: 'Gratuit',
-        location: '30 Av. Berthelot, 69007 Lyon',
-        date: '17 janvier 2022',
-        time: '18h',
-        source: '../../assets/images/glasses-alcool.jpg',
-      },
-      {
-        name: 'Kolok',
-        location: '30 Av. Berthelot, 69007 Lyon',
-        date: '20 février 2022',
-        time: '18h',
-        source: '../../assets/images/la-kolok-lyon.png',
-      },
-    ];
+    this.Events = [];
   }
 
   ngOnInit() {
+    //retrieve all events from api, copies it in the temporary array 'allEvents' and fill 'this.Events' with all needed information in the right format
     this.paramSubscription = this.route.params.subscribe((params) => {
       this.querySubscription = this.apollo
         .watchQuery<any>({
           query: GET_EVENTS,
-          variables: { event: 'ba884999-2fa1-450f-809c-1bf7ac48b724' },
         })
         .valueChanges.subscribe(({ data, loading }) => {
           this.loading = loading;
-          // const events = { ...data.events.edges };
-          const events = { ...data.event };
-          console.log(events);
-          // console.log(events[0].node.uuid);
-          // for (let i = 0; i < events.length; i++) {
-          //   console.log(events[i].node);
-          // }
-          let i = 0;
-          while (events[i].node) {
-            // console.log(events[i].node.uuid);
-            let date = new Date(events.startDate);
-            events.date = date.toLocaleDateString();
-            events.time = date.toLocaleTimeString().substring(0, 5);
-            this.event = events;
-            i++;
-          }
+          let allEvents = data.events.edges;
+          allEvents.forEach((element) => {
+            let node = element.node;
+            let entries = Object.entries(node);
+            let event = {};
+            entries.forEach((entry) => {
+              event[entry[0]] = entry[1];
+              let formattedDate = new Date(event['startDate']);
+              event['formattedDate'] = formattedDate.toLocaleDateString();
+              event['formattedTime'] = formattedDate
+                .toLocaleTimeString()
+                .substring(0, 5);
+            });
+            this.Events.push(event);
+          });
         });
     });
   }
