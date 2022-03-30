@@ -7,10 +7,12 @@ import { AlertController, ToastController } from '@ionic/angular';
 import { Token } from 'graphql';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
+
 //Query pour recupérer un evenement
 const GET_EVENT = gql` 
 query Event ($event: String!) {
   event (uuid:$event) {
+    uuid
     title
     description
     startDate
@@ -31,6 +33,16 @@ query Event ($event: String!) {
       }
     }
   }
+}
+`;
+
+const PAY_EVENT = gql`
+mutation joinEvent($event: String!, $eventUuid: String!) {
+  joinEvent(cancelUrl:"https://google.com",
+    eventUuid: $event,
+    priceUuid: $eventUuid,
+    successUrl:"https://google.com"
+  )
 }
 `;
 
@@ -64,12 +76,16 @@ query user_infos {
 
 
 export class FreeEventPage implements OnInit,OnDestroy {
+  isPay=false;
+  isError = false;
+
   textButtonRegister:string
 
   eventUuid: string;
   loading: boolean;
   event: any;
   userId : string;
+  urlPay: any;
   
   paramSubscription:Subscription 
   querySubscription:Subscription 
@@ -170,38 +186,74 @@ export class FreeEventPage implements OnInit,OnDestroy {
   onSubmit() {
     const token = localStorage.getItem('token');
 
-    if (!this.checkParticipants()) {
-      this.openToastError("Vous vous êtes déjà inscrit :)");
-    } else {
-      if (token) {
-        this.apollo.mutate({
-          mutation: REGISTER_EVENT,
-          variables: {
-            eventUuid: this.eventUuid
+        if (!this.checkParticipants()) {
+          this.openToastError("Vous vous êtes déjà inscrit :)");
+        } else {
+          if (this.isPay) {
+            try {
+              this.apollo.mutate({
+                mutation: PAY_EVENT,
+                variables: {
+                  event: this.event.uuid,
+                  eventUuid: this.eventUuid
+                }
+              }).subscribe(({data}) => {
+                const res=  data;
+                window.location.href = res["joinEvent"];
+            },(error) => {
+              try {
+                let jsonMsg = JSON.parse(error.message);
+                let errorMsg = jsonMsg[0].message;
+                this.openToastError(errorMsg);
+              } catch (e) {
+                this.isError = true;   
+                this.openToastError(error.message);       
+              }
+              
+            })
+            } catch(error) {
+              this.isError = true;
+              this.openToastError(error.message);
+            }
+
           }
-      }).subscribe(({data}) => {
-        const res: any = data;
-        this.openToastSuccess("Votre inscription à bien été réservé");
-        this.router.navigate(['/tablinks/home']);
-      },(error) => {
-        try {
-          let jsonMsg = JSON.parse(error.message);
-          let errorMsg = jsonMsg[0].message;
-          this.openToastError(errorMsg);
-        } catch (e) {
-          this.openToastError(error.message);          
-        }
-        
-      })
+          
+
+            
+        if (token && this.isError == false) {
+              this.apollo.mutate({
+                mutation: REGISTER_EVENT,
+                variables: {
+                  eventUuid: this.eventUuid
+            }
+          }).subscribe(({data}) => {
+            const res: any = data;
+            this.openToastSuccess("Votre inscription à bien été réservé");
+            this.router.navigate(['/tablinks/home']);
+        },(error) => {
+          try {
+            let jsonMsg = JSON.parse(error.message);
+            let errorMsg = jsonMsg[0].message;
+            this.openToastError(errorMsg);
+          } catch (e) {
+            this.openToastError(error.message);          
+          }
+          
+        })
+      
+      
     }
   }
+  
     
   }
+  
 
   whatMessage(price) {
     if (Number(price) <= 0) {
         this.textButtonRegister = `Je participe (Gratuit)`;
     } else {
+        this.isPay = true;
         this.textButtonRegister = `Je reserve la place : ${price}€`;
     }
   }
