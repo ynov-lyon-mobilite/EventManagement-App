@@ -39,11 +39,4 @@ import { createApollo, GraphQLModule } from './graphql.module';
       }],
   bootstrap: [AppComponent],
 })
-
-@NgModule({
-  imports: [BrowserModule],
-  providers: [
-
-  ],
-})
 export class AppModule {}

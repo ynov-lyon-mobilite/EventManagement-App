@@ -1,10 +1,8 @@
 import { Component, OnInit} from '@angular/core';
-import { Subscription } from 'rxjs';
 import {Apollo, gql} from 'apollo-angular';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { Token } from 'graphql';
 
 const LOGIN = gql`
   mutation Login ($email: String!, $password: String!){
