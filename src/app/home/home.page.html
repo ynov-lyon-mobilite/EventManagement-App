@@ -33,7 +33,7 @@
     <h2>Pour vous</h2>
   </div>
 
-  <div class="events" *ngFor="let event of Events">
+  <div class="events" *ngFor="let event of events">
     <ion-card>
       <ion-card-header class="ion-no-padding">
         <img src="{{event.image}}" />
@@ -42,7 +42,7 @@
       <ion-card-content>
         <p class="date">{{event.formattedDate}}</p>
         <h2 class="eventname">{{event.description}}</h2>
-        <ion-button [routerLink]="['./free-event']" style="color: white"
+        <ion-button [routerLink]="['./event', event.uuid]" style="color: white"
           >Voir les détails</ion-button
         >
         <div class="additional-info">

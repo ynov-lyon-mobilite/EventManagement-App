@@ -4,26 +4,8 @@ import { Apollo, gql } from 'apollo-angular';
 import { ActivatedRoute } from '@angular/router';
 import { withModule } from '@angular/core/testing';
 
-// const GET_EVENTS = gql`
-//   query GetEvent {
-//     events(page: 1, includePastEvents: true) {
-//       pageInfo {
-//         totalPages
-//       }
-//       edges {
-//         node {
-//           uuid
-//           title
-//           startDate
-//           endDate
-//           description
-//           participantsCount
-//           restPlaces
-//         }
-//       }
-//     }
-//   }
-// `;
+export const EVENTS = [];
+
 const GET_EVENTS = gql`
   query GetEvent {
     events(page: 1, take: 20, includePastEvents: true) {
@@ -42,6 +24,7 @@ const GET_EVENTS = gql`
           restPlaces
           prices {
             uuid
+            amount
           }
           uuid
         }
@@ -56,16 +39,13 @@ const GET_EVENTS = gql`
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  Events = [];
-
+  events = [];
   loading: boolean;
   // event: any;
   paramSubscription: Subscription;
   querySubscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private apollo: Apollo) {
-    this.Events = [];
-  }
+  constructor(private route: ActivatedRoute, private apollo: Apollo) {}
 
   ngOnInit() {
     //retrieve all events from api, copies it in the temporary array 'allEvents' and fill 'this.Events' with all needed information in the right format
@@ -89,7 +69,8 @@ export class HomePage {
                 .toLocaleTimeString()
                 .substring(0, 5);
             });
-            this.Events.push(event);
+            EVENTS.push(event);
+            this.events = EVENTS;
           });
         });
     });

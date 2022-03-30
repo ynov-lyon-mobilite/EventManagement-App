@@ -1,14 +1,21 @@
 <ion-content>
   <ion-header class="Header" style="background-image: url({{event?.image}});">
     <!-- <ion-buttons slot="start"> -->
-    <ion-back-button defaultHref="tablinks/home" class="back-button"></ion-back-button>
+    <ion-back-button
+      defaultHref="tablinks/home"
+      class="back-button"
+    ></ion-back-button>
     <!-- </ion-buttons> -->
-    <!-- <ion-img src={{event?.image}} class="mainImage"> </ion-img> -->
-    <div class="TitleInMainImage">{{event?.title}}</div>
-    <div class="DateInMainImage" id="startDate">{{event?.date}}</div>
-    <div class="HoureInMainImage">{{event?.time}}</div>
+    <ion-img src="{{event?.image}}" class="mainImage"> </ion-img>
+    <div class="TitleInMainImage" style="color: white">{{event?.title}}</div>
+    <div class="DateInMainImage" id="startDate" style="color: white">
+      {{event?.formattedDate}}
+    </div>
+    <div class="HoureInMainImage" style="color: white">
+      {{event?.formattedTime}}
+    </div>
   </ion-header>
-  
+
   <div class="OverviewTitle"><p class="Bold">Description</p></div>
   <div class="Overview"><p class="LightItalic">{{event?.description}}</p></div>
   <div #map style="width: 100%; height: 400px"></div>
@@ -16,7 +23,12 @@
     Places restantes :
     <p class="Bold">{{event?.restPlaces}}</p>
   </div>
-  <ion-button fill="clear" class="ButtonBuy" (click) = "presentAlertMultipleButtons()">
+  <ion-button
+    fill="clear"
+    class="ButtonBuy"
+    (click)="presentAlertMultipleButtons()"
+    style="color: white"
+  >
     {{textButtonRegister}}
   </ion-button>
 </ion-content>

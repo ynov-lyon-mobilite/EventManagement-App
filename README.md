@@ -13,3 +13,13 @@ From VS Code terminal :
 ### Ionic documentation
 
 https://ionicframework.com/docs
+
+
+
+### TODO	
+
+- do or delete search bar in home page
+- delete useless links in app-routing.module (ex: 'event/:uuid')
+- delete useless imports
+- delete console logs & useless comments
+- write useful comments
