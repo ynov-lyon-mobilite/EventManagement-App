@@ -11,7 +11,7 @@ export function createApollo(httpLink: HttpLink) {
 
   const auth = setContext((operation, context) => {
     const token = localStorage.getItem('token');
-    console.log("token : " + token);
+    // console.log("token : " + token);
 
     if (!token) {
       return {};
