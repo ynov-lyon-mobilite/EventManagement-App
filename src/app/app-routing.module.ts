@@ -22,10 +22,15 @@ const routes: Routes = [
   {
     path: 'tablinks',
     loadChildren: () => import('./tablinks/tablinks.module').then( m => m.TablinksPageModule)
+  },
+  {
+    path: 'create-account',
+    loadChildren: () => import('./create-account/create-account.module').then( m => m.CreateAccountPageModule)
+  },
+  {
+    path: 'edit-pass',
+    loadChildren: () => import('./edit-pass/edit-pass.module').then( m => m.EditPassPageModule)
   }
-
-
-
 ];
 
 @NgModule({

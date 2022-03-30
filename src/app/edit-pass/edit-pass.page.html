@@ -1,0 +1,32 @@
+<div class="page">
+  <ion-header class="ion-no-border">
+      <div>
+        <ion-img src="../../assets/images/profile-photo.png"></ion-img>
+      </div>
+    </ion-header>
+    <form #formEditPass="ngForm" (ngSubmit)="onSubmit(formEditPass)">
+      <div class="input-group">
+        <ion-item lines="full">
+          <ion-label position="floating">Ancien mot de passe</ion-label>
+          <ion-input name="oldPassword" type="password" minlength="4" required ngModel password="true"></ion-input>
+        </ion-item>
+        
+        <ion-item lines="full">
+          <ion-label position="floating">Nouveau mot de passe</ion-label>
+          <ion-input name="newPassword" type="password" minlength="4" required ngModel password="true"></ion-input>
+        </ion-item>
+        
+        <ion-item lines="full">
+          <ion-label position="floating">Confirmer mot de passe</ion-label>
+          <ion-input name="confirmPassword" type="password" minlength="4" required ngModel password="true"></ion-input>
+        </ion-item>
+      </div>
+      <div class="input-editProfil">
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" expand="block">Modifier</ion-button>
+        </ion-col>
+      </ion-row>
+      </div>
+    </form>
+</div>

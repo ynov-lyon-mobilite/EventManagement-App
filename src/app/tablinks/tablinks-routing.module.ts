@@ -30,6 +30,10 @@ const routes: Routes = [
         loadChildren: () => import('../edit-profil/edit-profil.module').then( m => m.EditProfilPageModule)
       },
       {
+        path: 'edit-pass',
+        loadChildren: () => import('../edit-pass/edit-pass.module').then( m => m.EditPassPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tablinks/home',
         pathMatch: 'full'
