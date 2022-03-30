@@ -30,7 +30,6 @@ const REGISTER_EVENT = gql`
   }
 `;
 
-t;
 const PROFIL = gql`
   query user_infos {
     user_infos {
