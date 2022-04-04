@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Apollo, gql } from 'apollo-angular';
 import { ActivatedRoute } from '@angular/router';
-import { withModule } from '@angular/core/testing';
 
 export const EVENTS = [];
 
@@ -41,7 +40,6 @@ const GET_EVENTS = gql`
 export class HomePage {
   events = [];
   loading: boolean;
-  // event: any;
   paramSubscription: Subscription;
   querySubscription: Subscription;
 
@@ -72,11 +70,32 @@ export class HomePage {
             EVENTS.push(event);
             this.events = EVENTS;
           });
+          console.log(EVENTS);
+          console.log(this.events);
         });
     });
   }
 
   ngOnDestroy(): void {
     this.paramSubscription.unsubscribe();
+  }
+
+  filterSearch(filter: string) {
+    // let filteredEvents = [];
+    // EVENTS.forEach((event) => {
+    //   if (
+    //     event.description?.localeCompare(filter, 'fr', {
+    //       sensitivity: 'base',
+    //     }) === 0 ||
+    //     event.title?.localeCompare(filter, 'fr', { sensitivity: 'base' }) === 0
+    //   ) {
+    //     filteredEvents.push(event);
+    //   }
+    // });
+    // this.events = filteredEvents;
+    this.events = EVENTS.filter(
+      (event) =>
+        event.description?.includes(filter) || event.title?.includes(filter)
+    );
   }
 }

@@ -4,10 +4,7 @@ import { Subscription } from 'rxjs';
 import { Apollo, gql } from 'apollo-angular';
 import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
-import { Token } from 'graphql';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { EVENTS } from '../home/home.page';
-import { EmbeddedTemplateAst } from '@angular/compiler';
 
 const PAY_EVENT = gql`
   mutation joinEvent($event: String!, $eventUuid: String!) {

@@ -21,7 +21,11 @@
     <div class="search">
       <ion-item lines="none" class="ion-no-padding">
         <ion-icon slot="start" name="search-outline"></ion-icon>
-        <ion-input placeholder="Chercher un événement"></ion-input>
+        <ion-input
+          placeholder="Chercher un événement"
+          [ngModel]="filter"
+          (ngModelChange)="filterSearch($event)"
+        ></ion-input>
         <ion-button slot="end">
           <img src="../../assets/filter.svg" />
         </ion-button>
@@ -33,7 +37,7 @@
     <h2>Pour vous</h2>
   </div>
 
-  <div class="events" *ngFor="let event of events">
+  <div class="events-display" *ngFor="let event of events">
     <ion-card>
       <ion-card-header class="ion-no-padding">
         <img src="{{event.image}}" />
