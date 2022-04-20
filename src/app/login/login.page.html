@@ -1,33 +1,53 @@
 <div class="page">
-<ion-header class="ion-no-border">
+  <ion-header class="ion-no-border">
     <div>
       <ion-img src="../../assets/logo.png"></ion-img>
     </div>
-</ion-header>
+  </ion-header>
 
-<form #formLogin="ngForm" (ngSubmit)="onSubmit(formLogin)">
-  <div class="input-group">
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input name="email" type="email" required ngModel email="true"></ion-input>
-    </ion-item>
+  <form #formLogin="ngForm" (ngSubmit)="onSubmit(formLogin)">
+    <div class="input-group" style="background-color: rgba(0, 0, 0, 0)">
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input
+          name="email"
+          type="email"
+          required
+          ngModel
+          email="true"
+        ></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Mot de passe</ion-label>
-      <ion-input name="password" type="password" minlength="4" required ngModel password="true"></ion-input>
-    </ion-item>
-  </div>
-  <div class="input-connect">
-    <ion-grid>
-      <ion-row>
-        <ion-col class="ion-margin-top">
-          <div>
-            <ion-text> Pas de compte ? </ion-text><a [routerLink]="['/create-account']">S'inscrire</a>
-            <ion-button type="submit" [disabled]="formLogin.form.invalid" color="primary" expand="block">Connexion</ion-button>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-</form>
+      <ion-item>
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input
+          name="password"
+          type="password"
+          minlength="4"
+          required
+          ngModel
+          password="true"
+        ></ion-input>
+      </ion-item>
+    </div>
+    <div class="input-connect">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-margin-top">
+            <div>
+              <ion-text> Pas de compte ? </ion-text
+              ><a [routerLink]="['/create-account']">S'inscrire</a>
+              <ion-button
+                type="submit"
+                [disabled]="formLogin.form.invalid"
+                color="primary"
+                expand="block"
+                >Connexion</ion-button
+              >
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </form>
 </div>

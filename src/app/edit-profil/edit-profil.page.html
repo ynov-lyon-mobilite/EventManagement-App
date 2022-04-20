@@ -1,27 +1,48 @@
 <div class="page">
-    <ion-header class="ion-no-border">
-        <div>
-          <ion-img src="../../assets/images/profile-photo.png"></ion-img>
-        </div>
-      </ion-header>
-      <form #formEditProfil="ngForm" (ngSubmit)="onSubmit(formEditProfil)">
-        <div class="input-group">
-          <ion-item lines="full">
-            <ion-label position="floating">Pseudo</ion-label>
-            <ion-input name="displayName" type="text" minlength="4" required ngModel value={{displayName}}></ion-input>
-          </ion-item>
-    
-          <ion-item lines="full">
-            <ion-label position="floating">Email</ion-label>
-            <ion-input name="email" type="email" required ngModel email="true" value="{{email}}"></ion-input>
-          </ion-item>
-        </div>
-        <div class="input-editProfil">
-        <ion-row>
-          <ion-col>
-            <ion-button type="submit" color="primary" expand="block">Modifier</ion-button>
-          </ion-col>
-        </ion-row>
-        </div>
-      </form>
+  <ion-header class="ion-no-border">
+    <ion-back-button
+      defaultHref="tablinks/home"
+      class="back-button"
+      style="position: absolute"
+    ></ion-back-button>
+    <div>
+      <ion-img src="../../assets/images/profile-photo.png"></ion-img>
+    </div>
+  </ion-header>
+  <form #formEditProfil="ngForm" (ngSubmit)="onSubmit(formEditProfil)">
+    <div class="input-group" style="background-color: rgba(0, 0, 0, 0)">
+      <ion-item lines="full">
+        <ion-label position="floating">Pseudo</ion-label>
+        <ion-input
+          name="displayName"
+          type="text"
+          minlength="4"
+          required
+          ngModel
+          value="{{displayName}}"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input
+          name="email"
+          type="email"
+          required
+          ngModel
+          email="true"
+          value="{{email}}"
+        ></ion-input>
+      </ion-item>
+    </div>
+    <div class="input-editProfil">
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" expand="block"
+            >Modifier</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </div>
+  </form>
 </div>
