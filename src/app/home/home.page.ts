@@ -18,6 +18,14 @@ const GET_EVENTS = gql`
           endDate
           description
           participantsCount
+          participants {
+            edges {
+              node {
+                displayName
+                uuid
+              }
+            }
+          }
           nbPlaces
           image
           restPlaces

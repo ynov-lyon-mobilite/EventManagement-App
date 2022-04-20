@@ -7,19 +7,19 @@ import { AlertController, ToastController } from '@ionic/angular';
 import { EVENTS } from '../home/home.page';
 
 const PAY_EVENT = gql`
-  mutation joinEvent($event: String!, $eventUuid: String!) {
+  mutation joinEvent($eventUuid: String!, $eventPriceUuid: String!) {
     joinEvent(
-      cancelUrl: "https://google.com"
-      eventUuid: $event
-      priceUuid: $eventUuid
-      successUrl: "https://google.com"
+      cancelUrl: "http://localhost:4200/tablinks/home"
+      eventUuid: $eventUuid
+      priceUuid: $eventPriceUuid
+      successUrl: "http://localhost:4200/tablinks/home"
     )
   }
 `;
 
 const REGISTER_EVENT = gql`
-  mutation createBooking($eventUuid: String!) {
-    createBooking(eventPriceUuid: $eventUuid) {
+  mutation createBooking($eventPriceUuid: String!) {
+    createBooking(eventPriceUuid: $eventPriceUuid) {
       user {
         displayName
       }
@@ -46,6 +46,7 @@ export class FreeEventPage implements OnInit, OnDestroy {
   isError = false;
   textButtonRegister: string;
   eventUuid: string;
+  eventPriceUuid: string;
   loading: boolean;
   event: any;
   userId: string;
@@ -70,6 +71,8 @@ export class FreeEventPage implements OnInit, OnDestroy {
     console.log(this.event);
     this.whatMessage(this.event.prices[0].amount);
     this.getUser();
+    this.eventPriceUuid = this.event.prices[0].uuid
+    console.log(window.location);
   }
 
   async openToastError(errorMsg) {
@@ -130,28 +133,27 @@ export class FreeEventPage implements OnInit, OnDestroy {
   }
 
   checkParticipants() {
-    for (let i = 0; i < this.event.participantsCount; i++) {
-      if (this.userId == this.event.participants.edges[i].node.uuid) {
-        return false;
-      }
-    }
-    return true;
+    const participants: any[] = this.event.participants.edges;
+    console.log(participants, this.userId);
+    return participants.some((participant) => {
+      return participant.node.uuid === this.userId
+    })
   }
 
   onSubmit() {
     const token = localStorage.getItem('token');
 
-    if (!this.checkParticipants()) {
+    if (this.checkParticipants()) {
       this.openToastError('Vous vous êtes déjà inscrit :)');
     } else {
       if (this.isPay) {
         try {
           this.apollo
-            .mutate({
-              mutation: PAY_EVENT,
-              variables: {
-                event: this.event.uuid,
-                eventUuid: this.eventUuid,
+          .mutate({
+            mutation: PAY_EVENT,
+            variables: {
+                eventUuid: this.event.uuid,
+                eventPriceUuid: this.eventPriceUuid,
               },
             })
             .subscribe(
@@ -176,19 +178,23 @@ export class FreeEventPage implements OnInit, OnDestroy {
         }
       }
 
+      
       if (token && this.isError == false) {
         this.apollo
-          .mutate({
-            mutation: REGISTER_EVENT,
-            variables: {
-              eventUuid: this.eventUuid,
-            },
-          })
-          .subscribe(
-            ({ data }) => {
+        .mutate({
+          mutation: REGISTER_EVENT,
+          variables: {
+            eventPriceUuid: this.event.prices[0].uuid,
+          },
+        })
+        .subscribe(
+          ({ data }) => {
               const res: any = data;
               this.openToastSuccess('Votre inscription à bien été réservé');
               this.router.navigate(['/tablinks/home']);
+              const newParticipants = Object.assign({},this.event.participants);
+              newParticipants.edges = [...newParticipants.edges,{node: {uuid: this.userId}}]
+              this.event.participants = newParticipants;
             },
             (error) => {
               try {
@@ -199,7 +205,8 @@ export class FreeEventPage implements OnInit, OnDestroy {
                 this.openToastError(error.message);
               }
             }
-          );
+            );
+            
       }
     }
   }
