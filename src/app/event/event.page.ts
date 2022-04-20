@@ -64,15 +64,11 @@ export class FreeEventPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // console.log(EVENTS);
     this.eventUuid = this.route.snapshot.paramMap.get('uuid');
-    // console.log(this.eventUuid);
     this.event = EVENTS.find((event) => event.uuid == this.eventUuid);
-    console.log(this.event);
     this.whatMessage(this.event.prices[0].amount);
     this.getUser();
-    this.eventPriceUuid = this.event.prices[0].uuid
-    console.log(window.location);
+    this.eventPriceUuid = this.event.prices[0].uuid;
   }
 
   async openToastError(errorMsg) {
@@ -134,10 +130,9 @@ export class FreeEventPage implements OnInit, OnDestroy {
 
   checkParticipants() {
     const participants: any[] = this.event.participants.edges;
-    console.log(participants, this.userId);
     return participants.some((participant) => {
-      return participant.node.uuid === this.userId
-    })
+      return participant.node.uuid === this.userId;
+    });
   }
 
   onSubmit() {
@@ -149,9 +144,9 @@ export class FreeEventPage implements OnInit, OnDestroy {
       if (this.isPay) {
         try {
           this.apollo
-          .mutate({
-            mutation: PAY_EVENT,
-            variables: {
+            .mutate({
+              mutation: PAY_EVENT,
+              variables: {
                 eventUuid: this.event.uuid,
                 eventPriceUuid: this.eventPriceUuid,
               },
@@ -178,22 +173,27 @@ export class FreeEventPage implements OnInit, OnDestroy {
         }
       }
 
-      
       if (token && this.isError == false) {
         this.apollo
-        .mutate({
-          mutation: REGISTER_EVENT,
-          variables: {
-            eventPriceUuid: this.event.prices[0].uuid,
-          },
-        })
-        .subscribe(
-          ({ data }) => {
+          .mutate({
+            mutation: REGISTER_EVENT,
+            variables: {
+              eventPriceUuid: this.event.prices[0].uuid,
+            },
+          })
+          .subscribe(
+            ({ data }) => {
               const res: any = data;
               this.openToastSuccess('Votre inscription à bien été réservé');
               this.router.navigate(['/tablinks/home']);
-              const newParticipants = Object.assign({},this.event.participants);
-              newParticipants.edges = [...newParticipants.edges,{node: {uuid: this.userId}}]
+              const newParticipants = Object.assign(
+                {},
+                this.event.participants
+              );
+              newParticipants.edges = [
+                ...newParticipants.edges,
+                { node: { uuid: this.userId } },
+              ];
               this.event.participants = newParticipants;
             },
             (error) => {
@@ -205,8 +205,7 @@ export class FreeEventPage implements OnInit, OnDestroy {
                 this.openToastError(error.message);
               }
             }
-            );
-            
+          );
       }
     }
   }

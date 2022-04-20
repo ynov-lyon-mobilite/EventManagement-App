@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { Apollo, gql } from 'apollo-angular';
 import { ActivatedRoute } from '@angular/router';
 
-export const EVENTS = [];
+export var EVENTS = [];
 
 const GET_EVENTS = gql`
   query GetEvent {
@@ -51,11 +51,11 @@ export class HomePage {
   paramSubscription: Subscription;
   querySubscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private apollo: Apollo) {}
-
-  ngOnInit() {
+  constructor(private route: ActivatedRoute, private apollo: Apollo) {
     //retrieve all events from api, copies it in the temporary array 'allEvents' and fill 'this.Events' with all needed information in the right format
     this.paramSubscription = this.route.params.subscribe((params) => {
+      EVENTS = [];
+      this.events = [];
       this.querySubscription = this.apollo
         .watchQuery<any>({
           query: GET_EVENTS,
