@@ -70,8 +70,6 @@ export class HomePage {
             EVENTS.push(event);
             this.events = EVENTS;
           });
-          console.log(EVENTS);
-          console.log(this.events);
         });
     });
   }
@@ -81,21 +79,20 @@ export class HomePage {
   }
 
   filterSearch(filter: string) {
-    // let filteredEvents = [];
-    // EVENTS.forEach((event) => {
-    //   if (
-    //     event.description?.localeCompare(filter, 'fr', {
-    //       sensitivity: 'base',
-    //     }) === 0 ||
-    //     event.title?.localeCompare(filter, 'fr', { sensitivity: 'base' }) === 0
-    //   ) {
-    //     filteredEvents.push(event);
-    //   }
-    // });
-    // this.events = filteredEvents;
-    this.events = EVENTS.filter(
-      (event) =>
-        event.description?.includes(filter) || event.title?.includes(filter)
-    );
+    let filteredEvents = [];
+    EVENTS.forEach((event) => {
+      if (
+        event.description?.localeCompare(filter, 'fr', {
+          sensitivity: 'base',
+        }) === 0 ||
+        event.title?.localeCompare(filter, 'fr', { sensitivity: 'base' }) ===
+          0 ||
+        event.description?.includes(filter) ||
+        event.title?.includes(filter)
+      ) {
+        filteredEvents.push(event);
+      }
+    });
+    this.events = filteredEvents;
   }
 }
