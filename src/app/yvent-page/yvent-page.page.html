@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" no-border> 
+    <ion-title>
+      Mes tickets
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="banner">
+    <img src="../../assets/party_mod.png" />
+
+    <div class="search">
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-icon slot="start" name="search-outline"></ion-icon>
+        <ion-input placeholder="Recherche tes tickets"></ion-input>
+        <ion-button slot='end'>
+          <img src="../../assets/filter.svg" />
+        </ion-button>
+      </ion-item>
+    </div>
+  </div>
+
+  <div class="title">
+    <h2>Mes tickets</h2>
+  </div>
+
+  <div *ngFor="let event of eventsList">
+    <ion-card>
+      <ion-card-header class="ion-no-padding">
+        <img src="{{event.image}}" />
+        <p> {{event.title}} </p>
+        <ion-card-content>
+          <p class="date">{{eventStartDate}}</p>
+          <h2 class="eventname">{{event.description}}</h2>
+          <ion-button [routerLink]="['/edit-profil']" style="color: white"> Voir les détails </ion-button>
+        </ion-card-content>
+      </ion-card-header>
+    </ion-card>
+  </div>
+</ion-content>

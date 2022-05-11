@@ -30,7 +30,13 @@ const routes: Routes = [
   {
     path: 'edit-pass',
     loadChildren: () => import('./edit-pass/edit-pass.module').then( m => m.EditPassPageModule)
+  },
+  {
+    path: 'yvent-page',
+    loadChildren: () => import('./yvent-page/yvent-page.module').then( m => m.YventPagePageModule)
   }
+
+
 ];
 
 @NgModule({
